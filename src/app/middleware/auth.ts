@@ -9,7 +9,7 @@ import { User } from '../modules/user/user.model';
 export const auth = (...requiredRoles: (keyof typeof USER_Role)[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
-
+    console.log(authHeader);
     if (!authHeader) {
       return res.status(401).json({
         success: false,
@@ -19,7 +19,7 @@ export const auth = (...requiredRoles: (keyof typeof USER_Role)[]) => {
     }
     //add Bearer in the token
     let token;
-    if (authHeader.startsWith('Bearer ')) {
+    if (authHeader.startsWith('Bearer')) {
       token = authHeader.split(' ')[1];
     } else {
       token = authHeader;
@@ -35,15 +35,22 @@ export const auth = (...requiredRoles: (keyof typeof USER_Role)[]) => {
 
     const { role, email } = decoded as JwtPayload;
 
-    const isUserExist = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-    if (!isUserExist) {
+    if (!user) {
       throw new AppError(401, 'User not found');
     }
+    // if (requiredRoles.length && !requiredRoles.includes(user.role)) {
+    //   throw new AppError(403, 'You are not authorized to access this route');
+    // }
+    // if (requiredRoles && !user.role.includes(requiredRoles)) {
+    //   throw new AppError(403, 'You are not authorized to access this route');
+    // }
 
     if (!requiredRoles.includes(role)) {
       throw new AppError(401, 'You are not authorized to access this route');
     }
+    req.user = user;
 
     next();
   });

@@ -33,6 +33,18 @@ class QueryBuilder<T> {
 
     excludeFields.forEach(el => delete queryObj[el]);
 
+    // Specific filtering for carId, date, and isBooked
+    if (queryObj.carId) {
+      queryObj.car = queryObj.carId;
+      delete queryObj.carId;
+    }
+    if (queryObj.date) {
+      queryObj.date = queryObj.date;
+    }
+    if (queryObj.isBooked) {
+      queryObj.isBooked = queryObj.isBooked;
+    }
+
     this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
 
     return this;

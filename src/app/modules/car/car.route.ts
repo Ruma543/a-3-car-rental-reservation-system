@@ -2,6 +2,7 @@ import express from 'express';
 import { CarControllers } from './car.controller';
 import { auth } from '../../middleware/auth';
 import { USER_Role } from '../user/user.const';
+import { BookingControllers } from '../booking/booking.controllers';
 
 const router = express.Router();
 
@@ -30,15 +31,11 @@ router.put(
   CarControllers.updateSingleCar
 );
 // router.put(
-//   '/:courseId/assign-faculties',
-//   validateRequest(CourseValidation.assignFacultiesValidationSchema),
-//   CourseControllers.assignFacultiesWithCourse
-// );
-// router.delete(
-//   '/:courseId/remove-faculties',
-//   auth('admin'),
-//   validateRequest(CourseValidation.assignFacultiesValidationSchema),
-//   CourseControllers.removeFacultiesFromCourse
+//   '/return',
+//   auth(USER_Role.admin),
+//   // validateRequest(CourseValidation.updateCourseValidationSchema),
+//   // CarControllers.updateSingleCar
+//   BookingControllers.returnCar
 // );
 router.delete('/:id', auth(USER_Role.admin), CarControllers.deleteCar);
 
