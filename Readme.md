@@ -15,20 +15,37 @@
 
 ## Admin Actions:
 
-    Car Management:
-    Create Car: Admins can add new cars with details like name, description, color, features, and price per hour.
+## Car Management:
 
-Update Car: Admins can update car information, including performing soft deletes
-to mark cars as unavailable without removing them from the database. Delete Car:
-Admins can perform soft deletes to mark cars as unavailable. • Booking
-Oversight: o View All Bookings: Admins can view all bookings to monitor rental
-activity. o Return Car: Admins can finalize rentals by setting the end time and
-calculating the total cost based on duration and price per hour.
+# Create Car: Admins can add new cars with details like name,
+
+description, color, features, and price per hour.
+
+# Update Car: Admins can update
+
+car information, including performing soft deletes to mark cars as unavailable
+without removing them from the database.
+
+# Delete Car: Admins can perform soft
+
+deletes to mark cars as unavailable.
+
+## Booking Oversight:
+
+# View All Bookings: Admins can view all bookings to monitor rental activity. o
+
+# Return Car: Admins can finalize rentals by setting the end time and calculating
+
+the total cost based on duration and price per hour.
 
 ## User Actions:
 
-• Book a Car: Users can book available cars by specifying the car ID, date, and
-start time. • View Booking History: Users can access their past and current
+# Book a Car: Users can book available cars by specifying the car ID, date, and
+
+start time.
+
+# View Booking History: Users can access their past and current
+
 booking history.
 
 ## project : npm run start:dev run the project locally in browser simply:http://localhost:5000
