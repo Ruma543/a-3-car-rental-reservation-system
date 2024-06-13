@@ -1,51 +1,41 @@
 ### For locally run:
 
-## clone the project
+### clone the project
 
-## Run the command: npm init/npm init -y
+### Run the command: npm init/npm init -y
 
-## Run the command for dist folder: npm run build or simply run tsc ## To run the
+### Run the command for dist folder: npm run build or simply run tsc ## To run the
 
-## Project Feature:
+### Project Feature:
 
-## Authentication & Authorization:
+### Authentication & Authorization:
 
-    Sign Up: Users and admins can register by providing details such as name, email, role, password, phone, and address.
-    Sign In: Users and admins can log in using their email and password to receive a JWT token for authenticated actions.
+#### Sign Up: Users and admins can register by providing details such as name, email, role, password, phone, and address.
 
-## Admin Actions:
+#### Sign In: Users and admins can log in using their email and password to receive a JWT token for authenticated actions.
 
-## Car Management:
+### Admin Actions:
 
-# Create Car: Admins can add new cars with details like name,
+#### Car Management:
 
-description, color, features, and price per hour.
+#### Create Car: Admins can add new cars with details like name,description, color, features, and price per hour.
 
-# Update Car: Admins can update
+#### Update Car: Admins can update car information, including performing soft deletes to mark cars as unavailable without removing them from the database.
 
-car information, including performing soft deletes to mark cars as unavailable
-without removing them from the database.
+#### Delete Car: Admins can perform soft deletes to mark cars as unavailable.
 
-# Delete Car: Admins can perform soft
+### Booking Oversight:
 
-deletes to mark cars as unavailable.
+#### View All Bookings: Admins can view all bookings to monitor rental activity. o
 
-## Booking Oversight:
+#### Return Car: Admins can finalize rentals by setting the end time and calculating the total cost based on duration and price per hour.
 
-# View All Bookings: Admins can view all bookings to monitor rental activity. o
+### User Actions:
 
-# Return Car: Admins can finalize rentals by setting the end time and calculating
-
-the total cost based on duration and price per hour.
-
-## User Actions:
-
-# Book a Car: Users can book available cars by specifying the car ID, date, and
+#### Book a Car: Users can book available cars by specifying the car ID, date, and
 
 start time.
 
-# View Booking History: Users can access their past and current
-
-booking history.
+#### View Booking History: Users can access their past and current booking history.
 
 ## project : npm run start:dev run the project locally in browser simply:http://localhost:5000
