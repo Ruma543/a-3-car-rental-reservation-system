@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TCar } from './car.interface';
+import { TBookingId, TCar } from './car.interface';
 
 const carSchema = new Schema<TCar>(
   {
@@ -20,5 +20,9 @@ const carSchema = new Schema<TCar>(
     timestamps: true,
   }
 );
-
 export const Car = model<TCar>('Car', carSchema);
+// const bookingSchema = new Schema<TBookingId>({
+//   bookingId: { type: Schema.Types.ObjectId, required: true },
+//   endTime: { type: String, required: true },
+// });
+// export const BookingId = model<TBookingId>('BookingId', bookingSchema);

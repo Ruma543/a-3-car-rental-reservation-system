@@ -58,39 +58,10 @@ const getMyBookingIntoDB = async (userId: string) => {
     .populate('car');
   return bookings;
 };
-// const returnCarIntoDB = async (bookingId: string, endTime: string) => {
-//   // Find the booking by ID
-//   const booking = await Booking.findById(bookingId).populate('car');
-//   if (!booking) {
-//     throw new Error('Booking not found');
-//   }
-//   console.log('return booking', 'booking');
-//   // Update the end time of the booking
-//   booking.endTime = endTime;
 
-//   // Calculate total cost
-//   const startTime = parseFloat(booking.startTime.replace(':', '.'));
-//   const endHour = parseFloat(endTime.replace(':', '.'));
-//   const duration = endHour - startTime;
-//   const totalCost = duration * booking?.car?.pricePerHour;
-//   booking.totalCost = totalCost;
-
-//   // Update car status to available
-//   const car = await Car.findById(booking.car._id);
-//   car.status = 'available';
-//   await car.save();
-
-//   // Save the updated booking
-//   await booking.save();
-
-//   // Populate user and car details
-//   await booking.populate('user').populate('car');
-
-//   return booking;
-// };
 export const BookingService = {
   createBookingIntoDB,
   getAllBookingIntoDB,
   getMyBookingIntoDB,
-  returnCarIntoDB,
+  // returnCarIntoDB,
 };

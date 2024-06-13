@@ -1,3 +1,5 @@
+import { Types } from 'mongoose';
+
 export type TCar = {
   name: string;
   description: string;
@@ -8,3 +10,7 @@ export type TCar = {
   status: 'available' | 'unavailable';
   isDeleted: boolean;
 };
+// export type TBookingId = {
+//   bookingId: Types.ObjectId;
+//   endTime: string;
+// };

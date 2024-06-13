@@ -48,33 +48,10 @@ const getMyBooking = catchAsync(async (req, res) => {
     data: result,
   });
 });
-// const returnCar = catchAsync(async (req, res) => {
-//   const booking = await Booking.findById(bookingId).populate('car');
-//   if (!booking) {
-//     throw new Error('Booking not found');
-//   }
 
-//   booking.endTime = endTime;
-
-//   // Calculate total cost
-//   const startTime = new Date(`1970-01-01T${booking.startTime}:00`);
-//   const endTimeDate = new Date(`1970-01-01T${endTime}:00`);
-//   const durationHours =
-//     (endTimeDate.getTime() - startTime.getTime()) / (1000 * 60 * 60);
-//   booking.totalCost = durationHours * booking.car.pricePerHour;
-
-//   // Update car status to available
-//   const car = booking.car;
-//   car.status = 'available';
-
-//   await booking.save();
-//   await car.save();
-
-//   return booking;
-// });
 export const BookingControllers = {
   createBooking,
   getAllBooking,
   getMyBooking,
-  returnCar,
+  // returnCar,
 };

@@ -21,7 +21,7 @@ router.get(
   BookingControllers.getMyBooking
 );
 
-router.put('/return', auth(USER_Role.admin), BookingControllers.returnCar);
+// router.put('/return', auth(USER_Role.admin), BookingControllers.returnCar);
 // router.put(
 //   '/:id',
 //   auth(USER_Role.admin),
