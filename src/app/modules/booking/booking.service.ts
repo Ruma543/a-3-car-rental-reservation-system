@@ -1,4 +1,6 @@
+import httpStatus from 'http-status';
 import QueryBuilder from '../../builder/queryBuilder';
+import AppError from '../../errors/AppError';
 import { Car } from '../car/car.model';
 import { User } from '../user/user.model';
 import { bookingSearchableFields } from './booking.const';
@@ -7,18 +9,22 @@ import { Booking } from './booking.model';
 
 const createBookingIntoDB = async (payload: TBooking) => {
   const car = await Car.findOne({ _id: payload.car, isDeleted: false });
-  console.log('car in services', car);
+  // console.log('car in services', car);
   if (!car) {
-    throw new Error('Car not found or is deleted');
+    throw new AppError(httpStatus.NOT_FOUND, 'No Data Found');
   }
 
   // Ensure the user exists
   const user = await User.findById(payload.user);
   if (!user) {
-    throw new Error('User not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'User not Found');
   }
-  console.log('user in service', user);
-
+  // console.log('user in service', user);
+  const carStatus = car.status;
+  console.log('car status', carStatus);
+  if (carStatus === 'unavailable') {
+    throw new AppError(httpStatus.NOT_FOUND, 'This car is not for booking');
+  }
   // Create the booking
   const booking = new Booking({
     ...payload,
@@ -50,7 +56,7 @@ const getAllBookingIntoDB = async (query: Record<string, unknown>) => {
 const getMyBookingIntoDB = async (userId: string) => {
   const user = await User.findById(userId);
   if (!user) {
-    throw new Error('User not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
   }
 
   const bookings = await Booking.find({ user: userId })

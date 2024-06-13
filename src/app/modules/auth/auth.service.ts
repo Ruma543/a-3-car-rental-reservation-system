@@ -12,7 +12,7 @@ const signUpIntoDB = async (payload: TUser) => {
   const user = await User.findOne({ email: payload.email });
 
   if (user) {
-    throw new Error('User already exists');
+    throw new AppError(httpStatus.BAD_REQUEST, 'this User already exists');
   }
 
   // user create
@@ -27,12 +27,12 @@ const signInIntoDB = async (payload: TSignInUser) => {
   );
 
   if (!isUserExist) {
-    throw new Error('User not found');
+    throw new AppError(httpStatus.BAD_REQUEST, 'User not found');
   }
 
   //check the password is right or not
-  console.log('payload password', payload.password);
-  console.log('is exist password', isUserExist.password);
+  // console.log('payload password', payload.password);
+  // console.log('is exist password', isUserExist.password);
   const isPasswordMatch = await bcrypt.compare(
     payload.password,
     isUserExist.password

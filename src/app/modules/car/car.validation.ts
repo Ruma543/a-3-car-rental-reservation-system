@@ -1,11 +1,14 @@
 import { z } from 'zod';
 const createCarValidationSchema = z.object({
   body: z.object({
-    name: z.string(),
-    description: z.string(),
-    color: z.string(),
+    name: z.string().nonempty({ message: 'name is required' }),
+    description: z.string().nonempty({ message: 'description is required' }),
+    color: z.string().nonempty({ message: 'color is required' }),
     isElectric: z.boolean(),
-    features: z.array(z.string()).min(1, 'At least one feature is required'),
+    features: z
+      .array(z.string())
+      .min(1, 'At least one feature is required')
+      .nonempty({ message: 'Feature is required' }),
     pricePerHour: z
       .number()
       .positive('Price per hour must be a positive number'),

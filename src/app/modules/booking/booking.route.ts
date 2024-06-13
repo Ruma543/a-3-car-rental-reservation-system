@@ -4,13 +4,15 @@ import express from 'express';
 import { BookingControllers } from './booking.controllers';
 import { auth } from '../../middleware/auth';
 import { USER_Role } from '../user/user.const';
+import validateRequest from '../../middleware/validateRequest';
+import { BookingValidation } from './booking.validation';
 
 const router = express.Router();
 
 router.post(
   '/',
   auth(USER_Role.user),
-  // validateRequest(CourseValidation.createCourseValidationSchema),
+  validateRequest(BookingValidation.createCarValidationSchema),
   BookingControllers.createBooking
 );
 router.get('/', auth(USER_Role.admin), BookingControllers.getAllBooking);

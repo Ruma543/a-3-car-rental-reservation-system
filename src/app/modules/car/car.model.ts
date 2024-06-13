@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { TBookingId, TCar } from './car.interface';
+import { TCar } from './car.interface';
 
 const carSchema = new Schema<TCar>(
   {
