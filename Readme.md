@@ -1,4 +1,4 @@
-### Setup project:
+## Setup project:
 
 ### npm init -y
 
@@ -26,15 +26,15 @@
 
 ### npx eslint --init
 
-### For locally run:
+## For locally run:
 
 ### clone the project
 
 ### Run the command: npm init/npm init -y
 
-### Run the command for dist folder: npm run build or simply run tsc ## To run the
+### Run the command for dist folder: npm run build or simply run tsc
 
-### Project Feature:
+## Project Feature:
 
 ### Authentication & Authorization:
 
