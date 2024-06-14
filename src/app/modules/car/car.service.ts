@@ -58,11 +58,11 @@ const returnCarIntoDB = async (
   if (!booking) {
     throw new Error('Booking not found');
   }
-  console.log(booking.car);
+  // console.log(booking.car);
   const startTimes = booking.startTime;
   const endTimes = booking.endTime;
   const pricePerHour = (booking.car as { pricePerHour: number }).pricePerHour;
-  console.log(pricePerHour, startTimes, endTimes);
+  // console.log(pricePerHour, startTimes, endTimes);
 
   //Convert startTime and endTime to hours
   const startHour =
@@ -77,7 +77,7 @@ const returnCarIntoDB = async (
 
   // Calculate the total cost
   const totalCost = Math.floor(durationInHours * pricePerHour);
-  console.log('hour', durationInHours, totalCost);
+  // console.log('hour', durationInHours, totalCost);
   booking.totalCost = totalCost;
   await booking.save();
   return booking;

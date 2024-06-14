@@ -25,21 +25,21 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     errorSource = simplifiedError?.errorSources;
   } else if (err?.name === 'ValidationError') {
     //this error is show when zod error is not used in the hit route
-    console.log('mongoose error');
+    // console.log('mongoose error');
     const simplifiedError = handleValidationError(err);
     statusCode = simplifiedError?.statusCode;
     message = simplifiedError?.message;
     errorSource = simplifiedError?.errorSources;
   } else if (err?.name === 'CastError') {
     //cast error is produce when single product get by Something other than a id
-    console.log('its cast error');
+    // console.log('its cast error');
     const simplifiedError = handleCastError(err);
     statusCode = simplifiedError?.statusCode;
     message = simplifiedError?.message;
     errorSource = simplifiedError?.errorSources;
   } else if (err?.code === 11000) {
     //when create duplicate department
-    console.log('its cast error');
+    // console.log('its cast error');
     const simplifiedError = handleDuplicateError(err);
     statusCode = simplifiedError?.statusCode;
     message = simplifiedError?.message;

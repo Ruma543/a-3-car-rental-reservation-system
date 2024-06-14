@@ -2,7 +2,6 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponce';
 import { BookingService } from './booking.service';
-import { Booking } from './booking.model';
 
 const createBooking = catchAsync(async (req, res) => {
   const { carId, date, startTime } = req.body;
@@ -18,7 +17,7 @@ const createBooking = catchAsync(async (req, res) => {
     isBooked: 'confirmed',
   });
 
-  console.log('result', result, userId);
+  // console.log('result', result, userId);
   if (!result) {
     return sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,

@@ -9,7 +9,7 @@ import { User } from '../modules/user/user.model';
 export const auth = (...requiredRoles: (keyof typeof USER_Role)[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
-    console.log(authHeader);
+    console.log('auth header', authHeader);
     if (!authHeader) {
       return res.status(401).json({
         success: false,
@@ -40,12 +40,6 @@ export const auth = (...requiredRoles: (keyof typeof USER_Role)[]) => {
     if (!user) {
       throw new AppError(401, 'User not found');
     }
-    // if (requiredRoles.length && !requiredRoles.includes(user.role)) {
-    //   throw new AppError(403, 'You are not authorized to access this route');
-    // }
-    // if (requiredRoles && !user.role.includes(requiredRoles)) {
-    //   throw new AppError(403, 'You are not authorized to access this route');
-    // }
 
     if (!requiredRoles.includes(role)) {
       throw new AppError(401, 'You are not authorized to access this route');

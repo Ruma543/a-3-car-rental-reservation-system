@@ -20,11 +20,24 @@ const createBookingIntoDB = async (payload: TBooking) => {
     throw new AppError(httpStatus.NOT_FOUND, 'User not Found');
   }
   // console.log('user in service', user);
-  const carStatus = car.status;
-  console.log('car status', carStatus);
-  if (carStatus === 'unavailable') {
-    throw new AppError(httpStatus.NOT_FOUND, 'This car is not for booking');
+  // Check if the car is already booked on the given date
+  const existingBooking = await Booking.findOne({
+    car: payload.car,
+    date: payload.date,
+    isBooked: 'confirmed',
+  });
+
+  if (existingBooking) {
+    throw new AppError(
+      httpStatus.CONFLICT,
+      'This car is already booked for the selected date'
+    );
   }
+  // const carStatus = car.status;
+  // // console.log('car status', carStatus);
+  // if (carStatus === 'unavailable') {
+  //   throw new AppError(httpStatus.NOT_FOUND, 'This car is not for booking');
+  // }
   // Create the booking
   const booking = new Booking({
     ...payload,

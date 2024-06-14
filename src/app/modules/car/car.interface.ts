@@ -1,5 +1,3 @@
-import { Types } from 'mongoose';
-
 export type TCar = {
   name: string;
   description: string;

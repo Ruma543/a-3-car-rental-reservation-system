@@ -17,15 +17,10 @@ app.use(
 
 app.use('/api', router);
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello Bangladesh');
+  res.send('Welcome to Car rental reservation system');
 });
 app.use(globalErrorHandler);
 app.use(notFound);
 
-// app.all('*', (req: Request, res: Response) => {
-//   res.status(400).json({
-//     success: false,
-//     message: 'Route not found',
-//   });
-// });
+
 export default app;

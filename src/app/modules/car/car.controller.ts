@@ -2,7 +2,6 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponce';
 import { CarService } from './car.service';
-import mongoose from 'mongoose';
 
 const createCar = catchAsync(async (req, res) => {
   const result = await CarService.createCarIntoDB(req.body);
@@ -54,6 +53,22 @@ const updateSingleCar = catchAsync(async (req, res) => {
 
   const result = await CarService.updateCarIntoDB(id, req.body);
 
+  if (!result) {
+    return sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'No data found',
+      data: {},
+    });
+  }
+  // if (!result) {
+  //   // If no car was found or updated, send a 404 Not Found response
+  //   return sendResponse(res, {
+  //     statusCode: httpStatus.NOT_FOUND,
+  //     success: false,
+  //     message: 'Car not found or no data was updated',
+  //   });
+  // }
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

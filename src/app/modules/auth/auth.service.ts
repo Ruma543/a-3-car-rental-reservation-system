@@ -38,7 +38,7 @@ const signInIntoDB = async (payload: TSignInUser) => {
     isUserExist.password
   );
 
-  console.log('password match', isPasswordMatch);
+  // console.log('password match', isPasswordMatch);
   if (!isPasswordMatch) {
     throw new AppError(httpStatus.FORBIDDEN, 'this password is not matched !');
   }
