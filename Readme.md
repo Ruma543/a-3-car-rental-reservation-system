@@ -1,3 +1,31 @@
+### Setup project:
+
+### npm init -y
+
+### npm install express
+
+### npm install mongoose --save
+
+### npm install typescript --save-dev
+
+### npm i cors
+
+### npm i dotenv
+
+### tsc -init
+
+### npm run build
+
+### npm i --save-dev @types/node
+
+### npm i --save-dev @types/express
+
+### npm i --save-dev @types/cors
+
+### npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
+
+### npx eslint --init
+
 ### For locally run:
 
 ### clone the project
@@ -32,9 +60,7 @@
 
 ### User Actions:
 
-#### Book a Car: Users can book available cars by specifying the car ID, date, and
-
-start time.
+#### Book a Car: Users can book available cars by specifying the car ID, date, and start time.
 
 #### View Booking History: Users can access their past and current booking history.
 
